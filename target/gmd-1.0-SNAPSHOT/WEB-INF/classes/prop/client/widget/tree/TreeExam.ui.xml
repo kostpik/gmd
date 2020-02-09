@@ -1,0 +1,33 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+   xmlns:ma="urn:import:gwt.material.design.addins.client"
+	xmlns:tr="urn:import:prop.client.widget.tree"
+	xmlns:m="urn:import:gwt.material.design.client.ui">
+	<ui:style>
+	.widt {	
+	    float:left;
+		width: auto !important;
+	}
+	
+	.marButt{
+		margin-left: 10px;
+	}
+		
+	</ui:style>
+  <m:MaterialPanel visible="true">   
+       <ma:tree.MaterialTree ui:field="root" styleName="{style.widt}">
+         <ma:tree.MaterialTreeItem iconType="FOLDER" text="Documents" >
+           <ma:tree.MaterialTreeItem iconType="ROTATION_3D" text="rotate"></ma:tree.MaterialTreeItem>
+           <ma:tree.MaterialTreeItem iconType="ACCOUNT_BALANCE" text="balance"></ma:tree.MaterialTreeItem>
+           <ma:tree.MaterialTreeItem iconType="ALARM" text="тревога"></ma:tree.MaterialTreeItem>
+         </ma:tree.MaterialTreeItem>
+       </ma:tree.MaterialTree>
+				
+		<m:MaterialButton  ui:field="button"  size="MEDIUM" backgroundColor="GREEN" iconType="ADD" iconPosition="RIGHT" styleName="{style.marButt}" text="ADD"/>
+		<m:MaterialButton  ui:field="minus"   size="MEDIUM" backgroundColor="RED" iconType="DELETE" iconPosition="RIGHT" styleName="{style.marButt}" text="ADD"/>
+		<m:MaterialPanel>
+		   <m:MaterialLabel ui:field="total"></m:MaterialLabel>
+		</m:MaterialPanel>
+ </m:MaterialPanel>
+</ui:UiBinder> 

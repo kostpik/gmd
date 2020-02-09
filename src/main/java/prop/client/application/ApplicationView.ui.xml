@@ -1,0 +1,91 @@
+<!--
+  #%L
+  GwtMaterial
+  %%
+  Copyright (C) 2015 - 2017 GwtMaterialDesign
+  %%
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+       http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  #L%
+  -->
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+        xmlns:g='urn:import:com.google.gwt.user.client.ui'
+        xmlns:m="urn:import:gwt.material.design.client.ui"
+        xmlns:ma="urn:import:gwt.material.design.addins.client"
+        xmlns:app="urn:import:prop.client.widget.tree"
+        xmlns:bcr="urn:import:prop.client.widget.breadcrumb">
+
+    <ui:with field="res" type="prop.client.resources.AppResources"/>
+
+    <m:MaterialPanel>
+        <m:MaterialHeader>
+            <m:MaterialNavBar ui:field="navBar" activates="sidenav" backgroundColor="INDIGO">
+                <m:MaterialNavBrand fontSize="1.2em" text="GMD" />
+                <m:MaterialNavSection float="RIGHT">
+                    <m:MaterialLink text="Link 1"/>
+                    <m:MaterialLink iconType="POLYMER" />
+                </m:MaterialNavSection>
+            </m:MaterialNavBar>
+        </m:MaterialHeader>
+
+        <m:MaterialSideNavPush m:id="sidenav" width="280">
+            <m:MaterialLink text="SplitPanel" iconType="FILTER_NONE" ui:field="splitPanel"/>
+            <m:MaterialLink text="Breadcrumb" iconType="TAB"/>
+            <m:MaterialLink text="Кто это?.." iconType="ATTACH_MONEY" ui:field="name"/>
+            <m:MaterialLink text="Добавить drag" iconType="ADD" ui:field="addDrag"/>
+            <m:MaterialLink text="Удалить drag" iconType="DO_NOT_DISTURB_OFF" ui:field="deleteDrag"/>
+            <m:MaterialLink text="Добавить dragHandler" iconType="GROUP_ADD" ui:field="addDragHandler"/>
+            <m:MaterialLink text="Удалить dragHandler" iconType="DELETE_FOREVER" ui:field="removeragHandler"/>
+        </m:MaterialSideNavPush>
+
+        <m:MaterialContainer ui:field="container">
+      <ma:splitpanel.MaterialSplitPanel backgroundColor="BLUE" height="500px" marginTop="50">
+				<m:MaterialPanel backgroundColor="BLUE_LIGHTEN_2">
+ 					<m:MaterialTitle textAlign="CENTER" title="Left Zone" description="Content must be added here"/>
+ 					<m:MaterialButton iconType="ACCOUNT_BALANCE" text="drag" waves="RED" ui:field="dragButton"></m:MaterialButton>
+ 				</m:MaterialPanel>
+				<m:MaterialPanel ui:field="p2" backgroundColor="BLUE_LIGHTEN_3">
+				</m:MaterialPanel>
+ 		</ma:splitpanel.MaterialSplitPanel>
+        <m:MaterialRow visible="true">
+          <m:MaterialNavBar>
+             <m:MaterialBreadcrumb  marginLeft="12" text="First" marginTop="50"/>
+             <m:MaterialBreadcrumb text="Second"/>
+             <m:MaterialBreadcrumb text="Third"/>
+           </m:MaterialNavBar>
+          </m:MaterialRow>
+            <m:MaterialRow >
+<!--                <m:MaterialColumn> -->
+<!--                     <bcr:BreadcrumbEx ui:field="breadcrumb"></bcr:BreadcrumbEx> -->
+<!--                </m:MaterialColumn>            -->
+            </m:MaterialRow>
+            <m:MaterialRow paddingTop="120">
+                <m:MaterialColumn>
+                        <app:TreeExam ui:field="tree" ></app:TreeExam>
+                </m:MaterialColumn>
+                
+                <m:MaterialColumn grid="s12 m4 l4" offset="m4 l4">
+                    <m:MaterialPanel ui:field="onlinePanel" textAlign="CENTER">
+                        <m:MaterialIcon marginTop="120" textColor="BLUE_DARKEN_1" iconType="POLYMER" iconSize="LARGE"/>
+                        <m:MaterialLabel text="GMD" textColor="BLUE" fontSize="2em"/>
+                        <m:MaterialLabel text="description" textColor="BLUE" fontSize="0.8em"/>
+                    </m:MaterialPanel>
+                </m:MaterialColumn>
+            </m:MaterialRow>
+        </m:MaterialContainer>
+		
+
+        <m:MaterialFAB>
+            <m:MaterialButton ui:field="btnAdd" iconType="ADD" type="FLOATING" size="LARGE" backgroundColor="PINK"/>
+        </m:MaterialFAB>
+    </m:MaterialPanel>
+</ui:UiBinder>
