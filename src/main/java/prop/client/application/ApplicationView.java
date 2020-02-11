@@ -92,6 +92,7 @@ public class ApplicationView extends ViewImpl implements ApplicationPresenter.My
     void printName(ClickEvent event) {
     	MaterialToast.fireToast("ТИХОН молодец");
     	name.setText("Тихон исправлется "+String.valueOf(count++));
+    
     }
     
     @UiHandler("addDrag")
@@ -99,10 +100,11 @@ public class ApplicationView extends ViewImpl implements ApplicationPresenter.My
     	 Restriction restriction = new Restriction();
     	 restriction.setEndOnly(false);
     	 MaterialDnd.draggable(dragButton, JsDragOptions.create(restriction));
+//    	 restriction
     }
     @UiHandler("deleteDrag")
     void deleteDrag(ClickEvent event) {
-    	
+      dragButton.getHandlerRegistry().clearHandlers();
     }
 }
 
