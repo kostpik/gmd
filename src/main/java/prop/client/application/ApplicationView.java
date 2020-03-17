@@ -19,8 +19,12 @@
  */
 package prop.client.application;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.logical.shared.AttachEvent;
+import com.google.gwt.event.shared.GwtEvent;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -29,6 +33,7 @@ import com.google.inject.Inject;
 import com.gwtplatform.mvp.client.ViewImpl;
 
 import gwt.material.design.addins.client.dnd.MaterialDnd;
+import gwt.material.design.addins.client.dnd.constants.DragEvents;
 import gwt.material.design.addins.client.dnd.constants.Restriction;
 import gwt.material.design.addins.client.dnd.js.JsDragOptions;
 import gwt.material.design.addins.client.splitpanel.MaterialSplitPanel;
@@ -54,7 +59,7 @@ public class ApplicationView extends ViewImpl implements ApplicationPresenter.My
     MaterialLink deleteDrag;
     
     @UiField
-    MaterialLink splitPanel;
+    MaterialLink splitPanelButton;
     
     @UiField
     MaterialLink name;
@@ -66,6 +71,13 @@ public class ApplicationView extends ViewImpl implements ApplicationPresenter.My
 
 	@UiField
 	MaterialButton dragButton;
+	
+	@UiField
+	MaterialSplitPanel splitPanel;
+	
+	private HandlerRegistration dragHandlerRegistration;
+
+	private MaterialDnd dnd;
 
 //    
 //    @UiField
@@ -86,12 +98,14 @@ public class ApplicationView extends ViewImpl implements ApplicationPresenter.My
     @UiHandler("btnAdd")
     void onAdd(ClickEvent e) {
         MaterialToast.fireToast("I love GMD");
+        splitPanel.setStyleName("splitter");
     }
     
     @UiHandler("name")
     void printName(ClickEvent event) {
     	MaterialToast.fireToast("ТИХОН молодец");
     	name.setText("Тихон исправлется "+String.valueOf(count++));
+    	splitPanel.removeStyleName("splitter");;
     
     }
     
@@ -99,12 +113,13 @@ public class ApplicationView extends ViewImpl implements ApplicationPresenter.My
     	void addDrag(ClickEvent event) {
     	 Restriction restriction = new Restriction();
     	 restriction.setEndOnly(false);
-    	 MaterialDnd.draggable(dragButton, JsDragOptions.create(restriction));
+    	  dnd=MaterialDnd.draggable(dragButton, JsDragOptions.create(restriction));
 //    	 restriction
     }
     @UiHandler("deleteDrag")
     void deleteDrag(ClickEvent event) {
       dragButton.getHandlerRegistry().clearHandlers();
+      
     }
 }
 

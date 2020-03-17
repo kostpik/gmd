@@ -27,7 +27,7 @@ public class BreadcrumbEx extends Composite implements HasText {
 	@UiField
 	Button button;
 	
-	@UiField
+	@UiField("bc")
 	MaterialBreadcrumb breadcrumb;
 	
 

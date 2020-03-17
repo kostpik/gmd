@@ -23,8 +23,31 @@
         xmlns:ma="urn:import:gwt.material.design.addins.client"
         xmlns:app="urn:import:prop.client.widget.tree"
         xmlns:bcr="urn:import:prop.client.widget.breadcrumb">
-
     <ui:with field="res" type="prop.client.resources.AppResources"/>
+    
+    <ui:style>
+    .row {
+    	padding: 0 0.25rem !important;
+    }
+    .splitter{
+		margin: 100px !important; 
+
+	}
+	.splitter > div + div div{
+		top: 3% !important;
+		height: 40px !important;
+	}
+	.splitter > div + div div:hover{
+		position:absolute !important;
+		width: 10px !important;
+		z-index: 10;
+		-webkit-transform: scale(1.2);
+  		-ms-transform: scale(1.2);
+  		transform: scale(1.2);
+		background-color: red !important;
+
+	}
+    </ui:style>
 
     <m:MaterialPanel>
         <m:MaterialHeader>
@@ -38,7 +61,7 @@
         </m:MaterialHeader>
 
         <m:MaterialSideNavPush m:id="sidenav" width="280">
-            <m:MaterialLink text="SplitPanel" iconType="FILTER_NONE" ui:field="splitPanel"/>
+            <m:MaterialLink text="SplitPanel" iconType="FILTER_NONE" ui:field="splitPanelButton"/>
             <m:MaterialLink text="Breadcrumb" iconType="TAB"/>
             <m:MaterialLink text="Кто это?.." iconType="ATTACH_MONEY" ui:field="name"/>
             <m:MaterialLink text="Добавить drag" iconType="ADD" ui:field="addDrag"/>
@@ -47,9 +70,10 @@
             <m:MaterialLink text="Удалить dragHandler" iconType="DELETE_FOREVER" ui:field="removeragHandler"/>
         </m:MaterialSideNavPush>
 
-        <m:MaterialContainer ui:field="container">
-      <ma:splitpanel.MaterialSplitPanel backgroundColor="BLUE" height="500px" marginTop="50">
+        <m:MaterialContainer ui:field="container" >
+      <ma:splitpanel.MaterialSplitPanel ui:field="splitPanel" backgroundColor="BLUE" height="500px" marginTop="50" addStyleNames="{style.splitter}">
 				<m:MaterialPanel backgroundColor="BLUE_LIGHTEN_2">
+                        <app:TreeExam ui:field="tree"></app:TreeExam>
  					<m:MaterialTitle textAlign="CENTER" title="Left Zone" description="Content must be added here"/>
  					<m:MaterialButton iconType="ACCOUNT_BALANCE" text="drag" waves="RED" ui:field="dragButton"></m:MaterialButton>
  				</m:MaterialPanel>
@@ -68,18 +92,21 @@
 <!--                     <bcr:BreadcrumbEx ui:field="breadcrumb"></bcr:BreadcrumbEx> -->
 <!--                </m:MaterialColumn>            -->
             </m:MaterialRow>
-            <m:MaterialRow paddingTop="120">
-                <m:MaterialColumn>
-                        <app:TreeExam ui:field="tree" ></app:TreeExam>
+            <m:MaterialRow addStyleNames="{style.row}">
+                <m:MaterialColumn grid="s4 m12 l4">
                 </m:MaterialColumn>
                 
-                <m:MaterialColumn grid="s12 m4 l4" offset="m4 l4">
+                <m:MaterialColumn grid="s4 m4 l4">
                     <m:MaterialPanel ui:field="onlinePanel" textAlign="CENTER">
-                        <m:MaterialIcon marginTop="120" textColor="BLUE_DARKEN_1" iconType="POLYMER" iconSize="LARGE"/>
+                        <m:MaterialIcon textColor="BLUE_DARKEN_1" iconType="POLYMER" iconSize="LARGE"/>
                         <m:MaterialLabel text="GMD" textColor="BLUE" fontSize="2em"/>
                         <m:MaterialLabel text="description" textColor="BLUE" fontSize="0.8em"/>
                     </m:MaterialPanel>
                 </m:MaterialColumn>
+                  <m:MaterialColumn grid="s4 m12 l4">
+                        <app:TreeExam ui:field="tree2"></app:TreeExam>
+                </m:MaterialColumn>    
+   
             </m:MaterialRow>
         </m:MaterialContainer>
 		

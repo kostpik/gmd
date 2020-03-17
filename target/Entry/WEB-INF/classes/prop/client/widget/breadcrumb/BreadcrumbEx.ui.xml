@@ -10,7 +10,7 @@
 	</ui:style>
 	<m:MaterialPanel visible="true">
           <m:MaterialNavBar>
-             <m:MaterialBreadcrumb ui:field="breadcrumb" marginLeft="12" text="First"/>
+             <m:MaterialBreadcrumb ui:field="bc" marginLeft="12" text="First"/>
              <m:MaterialBreadcrumb text="Second"/>
              <m:MaterialBreadcrumb text="Third"/>
           </m:MaterialNavBar>
